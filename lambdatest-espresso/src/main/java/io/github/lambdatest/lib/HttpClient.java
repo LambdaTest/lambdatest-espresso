@@ -8,7 +8,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import com.google.gson.Gson;
 
-import io.github.lambdatest.SmartUIApp;
+import io.github.lambdatest.LTApp;
 
 public class HttpClient {
     private static final String UPLOAD_API = "https://api.lambdatest.com/visualui/1.0/screenshot/save";
@@ -62,15 +62,15 @@ public class HttpClient {
 
 
 
-            SmartUIApp.log("Screenshot posted successfully: " + responseCode, "info");
+            LTApp.log("Screenshot posted successfully: " + responseCode, "info");
 
             return String.valueOf(responseCode);
 
         } catch (IOException e) {
-            SmartUIApp.log("Network error while posting screenshot: " + e.getMessage(), "error");
+            LTApp.log("Network error while posting screenshot: " + e.getMessage(), "error");
             e.printStackTrace();
         } catch (Exception e) {
-            SmartUIApp.log("Failed to post screenshot: " + e.toString(), "error");
+            LTApp.log("Failed to post screenshot: " + e.toString(), "error");
             e.printStackTrace();
         }
 
@@ -100,15 +100,15 @@ public class HttpClient {
                 throw new IOException("Unexpected response code for posting real device screenshot: " + responseCode);
             }
 
-            SmartUIApp.log("Real device screenshot posted successfully: " + responseCode, "info");
+            LTApp.log("Real device screenshot posted successfully: " + responseCode, "info");
 
             return String.valueOf(responseCode);
 
         } catch (IOException e) {
-            SmartUIApp.log("Network error while posting real device screenshot: " + e.getMessage(), "error");
+            LTApp.log("Network error while posting real device screenshot: " + e.getMessage(), "error");
             e.printStackTrace();
         } catch (Exception e) {
-            SmartUIApp.log("Failed to post real device screenshot: " + e.toString(), "error");
+            LTApp.log("Failed to post real device screenshot: " + e.toString(), "error");
             e.printStackTrace();
         }
 

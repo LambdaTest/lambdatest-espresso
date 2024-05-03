@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class SmartUIApp {
+public class LTApp {
 
     private HttpClient httpClient;
     public static String SMARTUI_LOGLEVEL = "info";
@@ -17,7 +17,7 @@ public class SmartUIApp {
     private static final String REAL_DEVICE_API = "http://10.150.0.47:5652/v1.0/capturescreenshot";
 
 
-    public SmartUIApp() {
+    public LTApp() {
         this.httpClient = new HttpClient();
     }
 
