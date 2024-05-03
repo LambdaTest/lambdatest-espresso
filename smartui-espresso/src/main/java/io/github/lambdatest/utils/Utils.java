@@ -6,6 +6,7 @@ import android.util.Base64;
 import androidx.test.runner.screenshot.Screenshot;
 import io.github.lambdatest.lib.HttpClient;
 import java.util.Map;
+import java.util.Objects;
 
 
 public class Utils {
@@ -16,7 +17,7 @@ public class Utils {
     }
 
 
-    public void screenshot(Map<String, String> screenshotDetails) {
+    public String screenshot(Map<String, String> screenshotDetails) {
 
         Bitmap bitmap = Screenshot.capture().getBitmap();
         final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -25,6 +26,11 @@ public class Utils {
 
         screenshotDetails.put("screenshot", content);
 
-        httpClient.postScreenshot(screenshotDetails);
+        return httpClient.postScreenshot(screenshotDetails);
+    }
+
+    public String realDeviceScreenshot(Map<String, Object> realDeviceScreenshotDetails) {
+
+        return  httpClient.postRealDeviceScreenshot(realDeviceScreenshotDetails);
     }
 }

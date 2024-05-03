@@ -6,13 +6,17 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import com.google.gson.Gson;
 
 import io.github.lambdatest.SmartUIApp;
 
 public class HttpClient {
     private static final String UPLOAD_API = "https://stage-api.lambdatestinternal.com/visualui/1.0/screenshot/save";
 
-    public void postScreenshot(Map<String, String> screenshotDetails) {
+    private static final String REAL_UPLOAD_DEVICE_API = "https://beta-api-verily-dev.lambdatestinternal.com/framework/v1/espresso/screenshot";
+
+
+    public String postScreenshot(Map<String, String> screenshotDetails) {
 
         try {
 
@@ -55,7 +59,12 @@ public class HttpClient {
                 throw new IOException("Unexpected response code for post Screenshot: " + responseCode);
             }
 
+
+
             SmartUIApp.log("Screenshot posted successfully: " + responseCode, "info");
+
+            return String.valueOf(responseCode);
+
         } catch (IOException e) {
             SmartUIApp.log("Network error while posting screenshot: " + e.getMessage(), "error");
             e.printStackTrace();
@@ -63,5 +72,47 @@ public class HttpClient {
             SmartUIApp.log("Failed to post screenshot: " + e.toString(), "error");
             e.printStackTrace();
         }
+
+        return null;
     }
+
+    public String postRealDeviceScreenshot(Map<String, Object> realDeviceScreenshotDetails) {
+        try {
+            URL url = new URL(REAL_UPLOAD_DEVICE_API);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("POST");
+            con.setDoOutput(true);
+            con.setRequestProperty("Content-Type", "application/json");
+
+
+
+            Gson gson = new Gson();
+            String jsonInputString = gson.toJson(realDeviceScreenshotDetails);
+
+            try (OutputStream output = con.getOutputStream()) {
+                byte[] input = jsonInputString.getBytes("utf-8");
+                output.write(input, 0, input.length);
+            }
+
+            int responseCode = con.getResponseCode();
+            if (responseCode < HttpURLConnection.HTTP_OK || responseCode >= HttpURLConnection.HTTP_MULT_CHOICE) {
+                throw new IOException("Unexpected response code for posting real device screenshot: " + responseCode);
+            }
+
+            SmartUIApp.log("Real device screenshot posted successfully: " + responseCode, "info");
+
+            return String.valueOf(responseCode);
+
+        } catch (IOException e) {
+            SmartUIApp.log("Network error while posting real device screenshot: " + e.getMessage(), "error");
+            e.printStackTrace();
+        } catch (Exception e) {
+            SmartUIApp.log("Failed to post real device screenshot: " + e.toString(), "error");
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+
 }
