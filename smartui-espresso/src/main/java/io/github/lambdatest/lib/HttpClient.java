@@ -11,9 +11,10 @@ import com.google.gson.Gson;
 import io.github.lambdatest.SmartUIApp;
 
 public class HttpClient {
-    private static final String UPLOAD_API = "https://stage-api.lambdatestinternal.com/visualui/1.0/screenshot/save";
+    private static final String UPLOAD_API = "https://api.lambdatest.com/visualui/1.0/screenshot/save";
 
-    private static final String REAL_UPLOAD_DEVICE_API = "https://beta-api-verily-dev.lambdatestinternal.com/framework/v1/espresso/screenshot";
+
+    private static final String REAL_UPLOAD_DEVICE_API = "https://mobile-api.lambdatest.com/framework/v1/espresso/screenshot";
 
 
     public String postScreenshot(Map<String, String> screenshotDetails) {
