@@ -4,9 +4,8 @@ import java.io.ByteArrayOutputStream;
 import android.graphics.Bitmap;
 import android.util.Base64;
 import androidx.test.runner.screenshot.Screenshot;
-import io.github.lambdatest.lib.HttpClient;
+import io.github.lambdatest.client.HttpClient;
 import java.util.Map;
-import java.util.Objects;
 
 
 public class Utils {
@@ -17,7 +16,7 @@ public class Utils {
     }
 
 
-    public String screenshot(Map<String, String> screenshotDetails) {
+    public String screenshot(Map < String, String > screenshotDetails) {
 
         Bitmap bitmap = Screenshot.capture().getBitmap();
         final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -29,8 +28,8 @@ public class Utils {
         return httpClient.postScreenshot(screenshotDetails);
     }
 
-    public String realDeviceScreenshot(Map<String, Object> realDeviceScreenshotDetails) {
+    public String realDeviceScreenshot(Map < String, Object > realDeviceScreenshotDetails) {
 
-        return  httpClient.postRealDeviceScreenshot(realDeviceScreenshotDetails);
+        return httpClient.postRealDeviceScreenshot(realDeviceScreenshotDetails);
     }
 }
