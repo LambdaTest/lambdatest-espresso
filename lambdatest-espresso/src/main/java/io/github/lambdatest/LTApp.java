@@ -63,7 +63,7 @@ public class LTApp {
                 realDeviceScreenshotDetails.put(Constants.KeyConstants.os, Constants.KeyConstants.android);
                 realDeviceScreenshotDetails.put(Constants.KeyConstants.isAppAutomation, true);
                 realDeviceScreenshotDetails.put(Constants.KeyConstants.screenshotId, UUID.randomUUID().toString());
-                realDeviceScreenshotDetails.put("url", Constants.KeyConstants.screenshotHost);
+                realDeviceScreenshotDetails.put("url", InstrumentationRegistry.getArguments().getString(Constants.KeyConstants.screenshotHost));
 
                 response = utils.realDeviceScreenshot(realDeviceScreenshotDetails);
 
