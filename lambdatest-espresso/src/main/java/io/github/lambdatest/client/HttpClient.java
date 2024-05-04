@@ -12,7 +12,7 @@ import io.github.lambdatest.LTApp;
 
 public class HttpClient {
 
-    public String postScreenshot(Map < String, String > screenshotDetails) {
+    public String postScreenshot(Map <String, String> screenshotDetails) {
 
         try {
 
@@ -21,11 +21,11 @@ public class HttpClient {
             con.setRequestMethod("POST");
             con.setDoOutput(true);
             String boundary = Long.toHexString(System.currentTimeMillis()); // Just generate some unique random value.
-            con.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
+            con.setRequestProperty(Constants.KeyConstants.contentType, "multipart/form-data; boundary=" + boundary);
 
             try (OutputStream output = con.getOutputStream()) {
-                Map < String, String > formFields = new LinkedHashMap < > ();
-                formFields.put("screenshot", screenshotDetails.get("screenshot"));
+                Map <String, String> formFields = new LinkedHashMap <> ();
+                formFields.put(Constants.KeyConstants.screenshot, screenshotDetails.get(Constants.KeyConstants.screenshot));
                 formFields.put(Constants.KeyConstants.screenshotName, screenshotDetails.get(Constants.KeyConstants.screenshotName));
                 formFields.put(Constants.KeyConstants.projectToken, screenshotDetails.get(Constants.KeyConstants.projectToken));
                 formFields.put(Constants.KeyConstants.buildId, screenshotDetails.get(Constants.KeyConstants.buildId));
@@ -54,31 +54,26 @@ public class HttpClient {
                 throw new IOException("Unexpected response code for post Screenshot: " + responseCode);
             }
 
-
-
             LTApp.log("Screenshot posted successfully: " + responseCode, "info");
 
             return String.valueOf(responseCode);
 
         } catch (IOException e) {
-            LTApp.log("Network error while posting screenshot: " + e.getMessage(), "error");
+            LTApp.log("Network error while posting screenshot: " + e.getMessage(), Constants.KeyConstants.error);
         } catch (Exception e) {
-            LTApp.log("Failed to post screenshot: " + e.toString(), "error");
+            LTApp.log("Failed to post screenshot: " + e.toString(), Constants.KeyConstants.error);
         }
 
         return null;
     }
 
-    public String postRealDeviceScreenshot(Map < String, Object > realDeviceScreenshotDetails) {
+    public String postRealDeviceScreenshot(Map <String, Object> realDeviceScreenshotDetails) {
         try {
-            URL url = new URL(Constants.ApiConstants.REAL_UPLOAD_DEVICE_API);
+            URL url = new URL(Constants.ApiConstants.REAL_DEVICE_UPLOAD__API);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("POST");
             con.setDoOutput(true);
-            con.setRequestProperty("Content-Type", "application/json");
-
-
-
+            con.setRequestProperty(Constants.KeyConstants.contentType, "application/json");
             Gson gson = new Gson();
             String jsonInputString = gson.toJson(realDeviceScreenshotDetails);
 
@@ -97,9 +92,9 @@ public class HttpClient {
             return String.valueOf(responseCode);
 
         } catch (IOException e) {
-            LTApp.log("Network error while posting real device screenshot: " + e.getMessage(), "error");
+            LTApp.log("Network error while posting real device screenshot: " + e.getMessage(), Constants.KeyConstants.error);
         } catch (Exception e) {
-            LTApp.log("Failed to post real device screenshot: " + e.toString(), "error");
+            LTApp.log("Failed to post real device screenshot: " + e.toString(), Constants.KeyConstants.error);
         }
 
         return null;

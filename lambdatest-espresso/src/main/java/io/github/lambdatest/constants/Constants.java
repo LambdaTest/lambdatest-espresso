@@ -5,7 +5,7 @@ public class Constants {
 
     public interface ApiConstants {
         String UPLOAD_API = "https://api.lambdatest.com/visualui/1.0/screenshot/save";
-        String REAL_UPLOAD_DEVICE_API = "https://mobile-api.lambdatest.com/framework/v1/espresso/screenshot";
+        String REAL_DEVICE_UPLOAD__API = "https://mobile-api.lambdatest.com/framework/v1/espresso/screenshot";
     }
 
     public interface KeyConstants {
@@ -24,20 +24,22 @@ public class Constants {
         String cropStatusBar = "cropStatusBar";
         String customCropStatusBar = "customCropStatusBar";
         String customCropNavigationBar = "customCropNavigationBar";
-
         String visual = "visual";
 
         // real device screenshot keys
         String rdBuildId = "rdBuildId";
         String deviceId = "deviceId";
-
         String testId = "testId";
         String orgId = "orgId";
         String android = "android";
-
         String isAppAutomation = "isAppAutomation";
         String screenshotId = "screenshotId";
         String screenshotHost = "screenshotHost";
+        String deviceidCons = "deviceid";
+        String url = "url";
+        String error = "error";
+        String screenshot = "screenshot";
+        String contentType = "Content-Type";
 
     }
 

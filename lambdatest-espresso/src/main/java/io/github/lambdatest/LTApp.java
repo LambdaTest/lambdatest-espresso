@@ -10,16 +10,10 @@ import io.github.lambdatest.constants.Constants;
 
 public class LTApp {
 
-    private HttpClient httpClient;
     public static String LOGLEVEL = "info";
     private static boolean DEBUG = LOGLEVEL.equals("debug");
     private static String LABEL = "[\u001b[35m" + ("lambdatest-espresso") + "\u001b[39m]";
     public static Boolean ignoreErrors = true;
-
-
-    public LTApp() {
-        this.httpClient = new HttpClient();
-    }
 
     public String screenshot(String name) {
         return screenshot(name, "", "");
@@ -29,7 +23,7 @@ public class LTApp {
         try {
             Utils utils = new Utils();
 
-            Map < String, String > screenshotDetails = new HashMap < > ();
+            Map <String, String> screenshotDetails = new HashMap < > ();
             screenshotDetails.put(Constants.KeyConstants.screenshotName, name);
             screenshotDetails.put(Constants.KeyConstants.screenshotType, "lambdatest-espresso-java");
             screenshotDetails.put(Constants.KeyConstants.projectToken, InstrumentationRegistry.getArguments().getString(Constants.KeyConstants.projectToken));
@@ -49,21 +43,19 @@ public class LTApp {
             String visualStr = InstrumentationRegistry.getArguments().getString(Constants.KeyConstants.visual);
             boolean visual = "true".equalsIgnoreCase(visualStr);
 
-
-
             String response = utils.screenshot(screenshotDetails);
 
             if (visual) {
 
-                Map < String, Object > realDeviceScreenshotDetails = new HashMap < > ();
+                Map <String, Object > realDeviceScreenshotDetails = new HashMap <> ();
                 realDeviceScreenshotDetails.put(Constants.KeyConstants.rdBuildId, InstrumentationRegistry.getArguments().getString(Constants.KeyConstants.rdBuildId));
-                realDeviceScreenshotDetails.put("deviceid", InstrumentationRegistry.getArguments().getString(Constants.KeyConstants.deviceId));
+                realDeviceScreenshotDetails.put(Constants.KeyConstants.deviceidCons, InstrumentationRegistry.getArguments().getString(Constants.KeyConstants.deviceId));
                 realDeviceScreenshotDetails.put(Constants.KeyConstants.testId, InstrumentationRegistry.getArguments().getString(Constants.KeyConstants.testId));
                 realDeviceScreenshotDetails.put(Constants.KeyConstants.orgId, InstrumentationRegistry.getArguments().getString(Constants.KeyConstants.orgId));
                 realDeviceScreenshotDetails.put(Constants.KeyConstants.os, Constants.KeyConstants.android);
                 realDeviceScreenshotDetails.put(Constants.KeyConstants.isAppAutomation, true);
                 realDeviceScreenshotDetails.put(Constants.KeyConstants.screenshotId, UUID.randomUUID().toString());
-                realDeviceScreenshotDetails.put("url", InstrumentationRegistry.getArguments().getString(Constants.KeyConstants.screenshotHost));
+                realDeviceScreenshotDetails.put(Constants.KeyConstants.url, InstrumentationRegistry.getArguments().getString(Constants.KeyConstants.screenshotHost));
 
                 response = utils.realDeviceScreenshot(realDeviceScreenshotDetails);
 
@@ -73,7 +65,7 @@ public class LTApp {
 
         } catch (Exception e) {
             log("Error taking screenshot " + name);
-            log(e.toString(), "debug");
+            log(e.toString(), Constants.KeyConstants.error);
             if (!ignoreErrors) {
                 throw new RuntimeException("Error taking screenshot " + name, e);
             }

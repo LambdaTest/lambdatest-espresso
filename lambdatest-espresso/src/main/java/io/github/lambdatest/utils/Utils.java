@@ -15,7 +15,6 @@ public class Utils {
         this.httpClient = new HttpClient();
     }
 
-
     public String screenshot(Map < String, String > screenshotDetails) {
 
         Bitmap bitmap = Screenshot.capture().getBitmap();
