@@ -1,7 +1,6 @@
 package io.github.lambdatest;
 
 import androidx.test.platform.app.InstrumentationRegistry;
-import io.github.lambdatest.client.HttpClient;
 import io.github.lambdatest.utils.Utils;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,13 +14,16 @@ public class LTApp {
     private static String LABEL = "[\u001b[35m" + ("lambdatest-espresso") + "\u001b[39m]";
     public static Boolean ignoreErrors = true;
 
+    private final Utils utils;
+    public LTApp() {
+        this.utils = new Utils();
+    }
     public String screenshot(String name) {
         return screenshot(name, "", "");
     }
 
     public String screenshot(String name, String customCropStatusBar, String customCropNavigationBar) {
         try {
-            Utils utils = new Utils();
 
             Map <String, String> screenshotDetails = new HashMap < > ();
             screenshotDetails.put(Constants.KeyConstants.screenshotName, name);
