@@ -69,7 +69,7 @@ public class HttpClient {
 
     public String postRealDeviceScreenshot(Map <String, Object> realDeviceScreenshotDetails) {
         try {
-            URL url = new URL(Constants.ApiConstants.REAL_DEVICE_UPLOAD__API);
+            URL url = new URL(Constants.ApiConstants.REAL_DEVICE_UPLOAD_API);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("POST");
             con.setDoOutput(true);

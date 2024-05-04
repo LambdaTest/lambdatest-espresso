@@ -5,7 +5,7 @@ public class Constants {
 
     public interface ApiConstants {
         String UPLOAD_API = "https://api.lambdatest.com/visualui/1.0/screenshot/save";
-        String REAL_DEVICE_UPLOAD__API = "https://mobile-api.lambdatest.com/framework/v1/espresso/screenshot";
+        String REAL_DEVICE_UPLOAD_API = "https://mobile-api.lambdatest.com/framework/v1/espresso/screenshot";
     }
 
     public interface KeyConstants {
