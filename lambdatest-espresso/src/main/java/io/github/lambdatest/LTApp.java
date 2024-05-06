@@ -54,7 +54,7 @@ public class LTApp {
                 realDeviceScreenshotDetails.put(Constants.KeyConstants.orgId, InstrumentationRegistry.getArguments().getString(Constants.KeyConstants.orgId));
                 realDeviceScreenshotDetails.put(Constants.KeyConstants.os, Constants.KeyConstants.android);
                 realDeviceScreenshotDetails.put(Constants.KeyConstants.isAppAutomation, true);
-                realDeviceScreenshotDetails.put(Constants.KeyConstants.screenshotId, UUID.randomUUID().toString());
+                realDeviceScreenshotDetails.put(name + "-" + Constants.KeyConstants.screenshotId, UUID.randomUUID().toString());
                 realDeviceScreenshotDetails.put(Constants.KeyConstants.url, InstrumentationRegistry.getArguments().getString(Constants.KeyConstants.screenshotHost));
                 response = utils.realDeviceScreenshot(realDeviceScreenshotDetails);
 
