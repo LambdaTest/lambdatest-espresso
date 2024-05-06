@@ -15,7 +15,6 @@ public class HttpClient {
     public String postScreenshot(Map <String, String> screenshotDetails) {
 
         try {
-
             URL url = new URL(Constants.ApiConstants.UPLOAD_API);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("POST");
@@ -54,8 +53,7 @@ public class HttpClient {
                 throw new IOException("Unexpected response code for post Screenshot: " + responseCode);
             }
 
-            LTApp.log("Screenshot posted successfully: " + responseCode, "info");
-
+            LTApp.log("Screenshot posted successfully: " + responseCode, Constants.KeyConstants.info);
             return String.valueOf(responseCode);
 
         } catch (IOException e) {
@@ -63,7 +61,6 @@ public class HttpClient {
         } catch (Exception e) {
             LTApp.log("Failed to post screenshot: " + e.toString(), Constants.KeyConstants.error);
         }
-
         return null;
     }
 
@@ -81,14 +78,12 @@ public class HttpClient {
                 byte[] input = jsonInputString.getBytes("utf-8");
                 output.write(input, 0, input.length);
             }
-
             int responseCode = con.getResponseCode();
             if (responseCode < HttpURLConnection.HTTP_OK || responseCode >= HttpURLConnection.HTTP_MULT_CHOICE) {
                 throw new IOException("Unexpected response code for posting real device screenshot: " + responseCode);
             }
 
-            LTApp.log("Real device screenshot posted successfully: " + responseCode, "info");
-
+            LTApp.log("Real device screenshot posted successfully: " + responseCode, Constants.KeyConstants.info);
             return String.valueOf(responseCode);
 
         } catch (IOException e) {
@@ -96,7 +91,6 @@ public class HttpClient {
         } catch (Exception e) {
             LTApp.log("Failed to post real device screenshot: " + e.toString(), Constants.KeyConstants.error);
         }
-
         return null;
     }
 

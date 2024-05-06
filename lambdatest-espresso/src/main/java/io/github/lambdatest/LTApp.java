@@ -9,8 +9,8 @@ import io.github.lambdatest.constants.Constants;
 
 public class LTApp {
 
-    public static String LOGLEVEL = "info";
-    private static boolean DEBUG = LOGLEVEL.equals("debug");
+    public static String LOGLEVEL = Constants.KeyConstants.info;
+    private static boolean DEBUG = LOGLEVEL.equals(Constants.KeyConstants.debug);
     private static String LABEL = "[\u001b[35m" + ("lambdatest-espresso") + "\u001b[39m]";
     public static Boolean ignoreErrors = true;
 
@@ -44,7 +44,6 @@ public class LTApp {
             // Checking for visual flag
             String visualStr = InstrumentationRegistry.getArguments().getString(Constants.KeyConstants.visual);
             boolean visual = "true".equalsIgnoreCase(visualStr);
-
             String response = utils.screenshot(screenshotDetails);
 
             if (visual) {
@@ -58,11 +57,9 @@ public class LTApp {
                 realDeviceScreenshotDetails.put(Constants.KeyConstants.isAppAutomation, true);
                 realDeviceScreenshotDetails.put(Constants.KeyConstants.screenshotId, UUID.randomUUID().toString());
                 realDeviceScreenshotDetails.put(Constants.KeyConstants.url, InstrumentationRegistry.getArguments().getString(Constants.KeyConstants.screenshotHost));
-
                 response = utils.realDeviceScreenshot(realDeviceScreenshotDetails);
 
             }
-
             return response;
 
         } catch (Exception e) {
@@ -76,13 +73,13 @@ public class LTApp {
     }
 
     public static void log(String message) {
-        log(message, "info");
+        log(message, Constants.KeyConstants.info);
     }
 
     public static void log(String message, String logLevel) {
-        if (logLevel == "debug" && DEBUG) {
+        if (logLevel == Constants.KeyConstants.debug && DEBUG) {
             System.out.println(LABEL + " " + message);
-        } else if (logLevel == "info") {
+        } else if (logLevel == Constants.KeyConstants.info) {
             System.out.println(LABEL + " " + message);
         }
     }

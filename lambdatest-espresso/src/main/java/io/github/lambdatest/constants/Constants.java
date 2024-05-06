@@ -2,7 +2,6 @@ package io.github.lambdatest.constants;
 
 public class Constants {
 
-
     public interface ApiConstants {
         String UPLOAD_API = "https://api.lambdatest.com/visualui/1.0/screenshot/save";
         String REAL_DEVICE_UPLOAD_API = "https://mobile-api.lambdatest.com/framework/v1/espresso/screenshot";
@@ -40,8 +39,7 @@ public class Constants {
         String error = "error";
         String screenshot = "screenshot";
         String contentType = "Content-Type";
-
+        String  info = "info";
+        String debug = "debug";
     }
-
-
 }

@@ -15,20 +15,17 @@ public class Utils {
         this.httpClient = new HttpClient();
     }
 
-    public String screenshot(Map < String, String > screenshotDetails) {
+    public String screenshot(Map <String, String> screenshotDetails) {
 
         Bitmap bitmap = Screenshot.capture().getBitmap();
         final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
         String content = Base64.encodeToString(outputStream.toByteArray(), Base64.DEFAULT);
-
         screenshotDetails.put("screenshot", content);
-
         return httpClient.postScreenshot(screenshotDetails);
     }
 
-    public String realDeviceScreenshot(Map < String, Object > realDeviceScreenshotDetails) {
-
+    public String realDeviceScreenshot(Map <String, Object> realDeviceScreenshotDetails) {
         return httpClient.postRealDeviceScreenshot(realDeviceScreenshotDetails);
     }
 }
