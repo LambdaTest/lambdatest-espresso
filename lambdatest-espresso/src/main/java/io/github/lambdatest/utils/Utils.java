@@ -7,10 +7,8 @@ import androidx.test.runner.screenshot.Screenshot;
 import io.github.lambdatest.client.HttpClient;
 import java.util.Map;
 
-
 public class Utils {
     private final HttpClient httpClient;
-
     public Utils() {
         this.httpClient = new HttpClient();
     }
@@ -24,7 +22,6 @@ public class Utils {
         screenshotDetails.put("screenshot", content);
         return httpClient.postScreenshot(screenshotDetails);
     }
-
     public String realDeviceScreenshot(Map <String, Object> realDeviceScreenshotDetails) {
         return httpClient.postRealDeviceScreenshot(realDeviceScreenshotDetails);
     }

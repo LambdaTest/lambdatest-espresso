@@ -13,7 +13,6 @@ public class LTApp {
     private static boolean DEBUG = LOGLEVEL.equals(Constants.KeyConstants.debug);
     private static String LABEL = "[\u001b[35m" + ("lambdatest-espresso") + "\u001b[39m]";
     public static Boolean ignoreErrors = true;
-
     private final Utils utils;
     public LTApp() {
         this.utils = new Utils();
