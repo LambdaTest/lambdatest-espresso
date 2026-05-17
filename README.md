@@ -18,8 +18,8 @@ With TestMu AI (Formerly LambdaTest), you can run Espresso Android tests across 
 ### Prerequisites
 
 - Android Studio and the Android SDK installed on your system.
-- A TestMu AI (Formerly LambdaTest) account with access to the Real Device cloud. [Sign up here](https://www.testmuai.com/register/).
-- Your TestMu AI Username and Access Key from your [profile page](https://accounts.lambdatest.com/detail/profile).
+- A TestMu AI (Formerly LambdaTest) account with access to the Real Device cloud. Sign up here.
+- Your TestMu AI Username and Access Key from your profile page.
 - Your app APK and test APK files built and ready.
 
 ### Setup
@@ -38,11 +38,11 @@ With TestMu AI (Formerly LambdaTest), you can run Espresso Android tests across 
 
 ### Run tests
 
-1. Upload your app and test APKs to the TestMu AI platform using the [Upload API](https://www.testmuai.com/support/docs/getting-started-with-espresso-testing/).
+1. Upload your app and test APKs to the TestMu AI platform using the Upload API.
 
 2. Execute your Espresso tests on real devices via the TestMu AI API or dashboard.
 
-3. View results in the [TestMu AI Automation Dashboard](https://appautomation.lambdatest.com/).
+3. View results in the TestMu AI Automation Dashboard.
 
 ### Local testing with TestMu AI Tunnel
 
